@@ -37,6 +37,13 @@ func TestTrace_Stop_withArgs(t *testing.T) {
 	assert.Equal(t, `<:foo:db.query:user=tobi,species=ferret:`, buf.String())
 }
 
+func TestTrace_Stop_withNumericValues(t *testing.T) {
+	var buf bytes.Buffer
+	probe := trace.Trace{ID: "foo", Writer: &buf}
+	probe.Stop("db.query", trace.Args{"user": "tobi", "age": 3})
+	assert.Equal(t, `<:foo:db.query:user=tobi,age=3:`, buf.String())
+}
+
 func TestTrace_Stop_escaped(t *testing.T) {
 	var buf bytes.Buffer
 	probe := trace.Trace{ID: "foo", Writer: &buf}

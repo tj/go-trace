@@ -8,7 +8,7 @@ import (
 )
 
 // Args for a tracer.
-type Args map[string]string
+type Args map[string]interface{}
 
 // Trace probe.
 type Trace struct {
@@ -45,8 +45,8 @@ func formatArgs(args Args) string {
 }
 
 // format argument.
-func formatArg(k, v string) string {
-	return Escape(k) + "=" + Escape(v)
+func formatArg(k string, v interface{}) string {
+	return fmt.Sprintf("%s=%s", Escape(k), Escape(fmt.Sprintf("%v", v)))
 }
 
 // Escape string.
