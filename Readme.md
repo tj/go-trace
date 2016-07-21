@@ -13,7 +13,6 @@ Go tracing library for Sysdig's fantastic [tracers](https://sysdig.com/blog/sysd
 
 ## Badges
 
-[![Build Status](https://semaphoreci.com/api/v1/tj/apex/branches/master/badge.svg)](https://semaphoreci.com/tj/apex)
 [![GoDoc](https://godoc.org/github.com/tj/go-trace?status.svg)](https://godoc.org/github.com/tj/go-trace)
 ![](https://img.shields.io/badge/license-MIT-blue.svg)
 ![](https://img.shields.io/badge/status-stable-green.svg)
