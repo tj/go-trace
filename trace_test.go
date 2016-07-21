@@ -2,6 +2,7 @@ package trace_test
 
 import (
 	"bytes"
+	"io/ioutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -55,4 +56,11 @@ func TestEscape(t *testing.T) {
 	input := "foo.bar.baz,test="
 	output := trace.Escape(input)
 	assert.Equal(t, `foo\.bar\.baz\,test\=`, output)
+}
+
+func BenchmarkStart(b *testing.B) {
+	probe := trace.Trace{ID: "foo", Writer: ioutil.Discard}
+	for i := 0; i < b.N; i++ {
+		probe.Start("foo.bar.baz", trace.Args{"foo": "bar", "bar": "baz"})
+	}
 }
