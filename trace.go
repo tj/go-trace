@@ -10,10 +10,10 @@ import (
 // Args for a tracer.
 type Args map[string]string
 
-// Trace implementation.
+// Trace probe.
 type Trace struct {
-	ID     string
-	Writer io.Writer
+	ID     string    // ID of the trace
+	Writer io.Writer // Writer which should be /dev/null in production
 }
 
 // Start tracer.
